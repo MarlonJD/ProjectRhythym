@@ -22,6 +22,9 @@
                         <li>
                             <a href="<?php echo base_url('admin/Distribution/2'); ?>">Canceled</a>
                         </li>
+                        <li>
+                            <a href="<?php echo base_url('admin/DistAdd/'); ?>">Add</a>
+                        </li>
                     </ul>
                 </li>
                 <li>

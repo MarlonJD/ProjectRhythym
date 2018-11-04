@@ -58,6 +58,32 @@ class AdminModel extends CI_Model
         $result = $this->db->query($query);
     }
 
+    function sendDistAsUser()
+    {
+        $data = array(
+            'userid'=>$this->input->post('inputUserid'),
+            'artist'=>$this->input->post('inputArtist'),
+            'type'=>$this->input->post('inputType'),
+            'title'=>$this->input->post('inputTitle'),
+            'genre'=>$this->input->post('inputGenre'),
+            'sgenre'=>$this->input->post('inputsGenre'),
+            'releaseDate'=>$this->input->post('inputReleaseDate'),
+            'media'=>$this->input->post('upMedia'),
+            'cover'=>$this->input->post('upCover'),
+            'agreement'=>$this->input->post('cbAgg'),
+            'cbYoutube'=>$this->input->post('cbYoutube'),
+            'cbSpotify'=>$this->input->post('cbSpotify'),
+            'cbApple'=>$this->input->post('cbApple'),
+            'cbAmazon'=>$this->input->post('cbAmazon'),
+            'cbDeezer'=>$this->input->post('cbDeezer'),
+            'cbGPlay'=>$this->input->post('cbGPlay'),
+            'cbShazam'=>$this->input->post('cbShazam'),
+            'cbTidal'=>$this->input->post('cbTidal')
+
+        );
+        $this->db->insert('dist',$data);
+    }
+
     //Genres Functions
     function getAllUsers()
     {

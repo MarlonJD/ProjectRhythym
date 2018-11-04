@@ -55,6 +55,56 @@ class Admin extends CI_Controller {
 				}
 				$this->load->view('admin/adminDist', $data);
 				$this->load->view('Theme/main/footerMain');
+				
+			}
+			else
+			{
+				redirect('/user/login');
+			}
+		} else {
+			redirect('/user/login');
+        }
+	}
+
+	function DistAdd()
+	{
+		$this->load->model('AdminModel');
+		$this->load->helper('form');
+		$this->load->helper('main');
+		$this->load->library('form_validation');
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			if ($_SESSION['is_admin']  === true) 
+			{
+				if($this->input->post('buttonSendDist'))
+				{  
+					
+					$this->form_validation->set_rules('upMedia', 'upMedia', 'required');
+					if ($this->form_validation->run() === false)
+					{
+						$data['sent'] = 'mediaempty';
+					}
+					else
+					{
+						$this->AdminModel->sendDistAsUser();
+						if ($this->db->affected_rows() > 0)
+						{
+							$data['sent'] = 'success';
+						}
+						else
+						{
+							$data['sent'] = 'something';
+						}
+					}
+
+				}
+				$data['genres']=$this->AdminModel->getGenres();
+				$data['title'] = "Admin Users";
+				$this->load->view('Theme/main/headerMain', $data);
+				$data['links']=$this->AdminModel->getAllLinks();
+				$this->load->view('Theme/admin/sideBar', $data);
+				$data['users']=$this->AdminModel->getAllUsers();
+				$this->load->view('admin/adminDistAdd', $data);
+				$this->load->view('Theme/main/footerMain');	
 			}
 			else
 			{

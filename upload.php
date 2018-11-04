@@ -11,7 +11,7 @@ $time = time();
 $fp = fopen($file_path, 'rb');
 $size = filesize($file_path);
 
-        $token = 'pAfQI2VmRXAAAAAAAAAACL5WMbA1U_NgU9_hM-cZEf-cr0fCdFOxyhsx1LXRty9k'; // oauth token
+        $token = '3pJIu5Xud5AAAAAAAAAJyG4Xghf_dBof6oKLNkwDM3EjNbnFRo7mvcg2Iy31mAaK'; // oauth token
 
         $headers = array('Authorization: Bearer '. $token,
             'Content-Type: application/octet-stream',
